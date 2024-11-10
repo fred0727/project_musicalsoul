@@ -1,0 +1,116 @@
+main section.hero {
+  height: auto;
+  background-color: var(--gray);
+  padding-bottom: var(--p3);
+  width: 100%;
+}
+
+main section.hero .hero__image {
+  background-image: url("/static/public/images/viiolin.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 100%;
+}
+
+main section.hero h3,
+main section.hero h1,
+main section.hero h2 {
+  margin-top: var(--m6);
+}
+
+main section.hero h3 {
+  font-size: var(--font-lg);
+  color: white;
+}
+
+main section.metodology {
+  position: relative;
+  overflow: hidden;
+}
+
+main section.metodology h3 {
+  margin-top: var(--m3);
+}
+
+main section.metodology p {
+  margin-top: var(--m2);
+  font-family: LatoItalic;
+  font-size: var(--font-md);
+}
+
+main section.metodology .metodology__background {
+  display: none;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/static/public/images/young-man-recording-music-video-blog-home-lesson-playing-guitar-or-making-broadcast-internet-tutorial-while-sitting-in-loft-workplace-or-at-home.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+
+main section .button__container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--m6);
+}
+
+.overlay {
+  background-image: url("/static/public/images/viiolin.png");
+}
+
+@media (min-width: 1024px) {
+  main section.hero {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    padding-left: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  main section.hero > div:last-child {
+    width: 100%;
+    margin-left: 50%;
+  }
+  main section.hero .hero__image {
+    position: absolute;
+    height: 150vh;
+    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+  }
+  main section.metodology .metodology__background {
+    display: block;
+  }
+  main section.metodology .metodology__block {
+    padding: var(--p3);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    border-radius: var(--b1);
+    width: 50%;
+  }
+  main section.metodology h2 {
+    font-size: var(--font-xxl);
+  }
+  main section.metodology h3 {
+    font-size: var(--font-xl);
+  }
+  main section.metodology p {
+    font-size: var(--font-lg);
+  }
+  main section .button__container {
+    justify-content: center;
+  }
+  main section .button__container button {
+    width: 40%;
+  }
+}

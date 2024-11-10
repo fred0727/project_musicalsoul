@@ -1,0 +1,104 @@
+main {
+  position: relative;
+}
+
+main section.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: var(--p1);
+  padding-right: var(--p1);
+  min-height: 100vh;
+}
+
+main section.hero h1 {
+  font-size: var(--font-xl);
+  color: var(--yellow);
+  position: relative;
+  width: 100%;
+  margin-top: var(--m2);
+}
+
+main section.hero h2 {
+  color: var(--yellow);
+  position: relative;
+  width: 100%;
+}
+
+main section.hero p {
+  font-family: LatoItalic;
+  color: white;
+  font-size: var(--font-md);
+  margin-top: var(--m5);
+}
+
+main section.hero article {
+  margin-top: var(--m3);
+  padding: var(--p1);
+  background-color: white;
+  width: 100%;
+  border-radius: var(--b1);
+  border: 1px solid var(--yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main section.hero article span:first-child {
+  font-family: LatoItalic;
+  color: var(--yellow);
+  font-size: var(--font-md);
+}
+
+main section.hero article hr {
+  width: 25%;
+  margin: var(--m1) 0px;
+}
+
+main section.hero article .hero__prices {
+  font-family: LatoBold;
+  font-size: var(--font-xl);
+  color: var(--yellow);
+}
+
+main section.hero article span:last-child {
+  font-family: Lato;
+  font-size: var(--font-md);
+  color: var(--lightgray);
+}
+
+main section.hero article .hero__cta {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--m2);
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  main section.hero {
+    max-width: var(--max-width);
+    padding-left: var(--p-section);
+    padding-right: var(--p-section);
+  }
+  main section.hero {
+    width: 50%;
+  }
+  main section.hero article div {
+    /* font-size: var(--font-xl); */
+  }
+  main section.hero h1 {
+    font-size: var(--font-xxl);
+  }
+  main section.hero p {
+    font-size: var(--font-lg);
+  }
+  main section.hero article span:first-child,
+  main section.hero article span:last-child {
+    font-size: var(--font-lg);
+  }
+  main section.hero article div.hero__cta {
+    width: 80%;
+  }
+}

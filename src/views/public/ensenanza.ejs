@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/header', {title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/ensenanza.css">
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <!-- <div class="overlay nav__padding"></div> -->
+        <section class="hero nav__padding">
+            <div class="hero__image appear"></div>
+            <div>
+                <h1 class="underline appear">
+                    Pruebas de acceso al consevatorio
+                </h1>
+                <h3 class="appear">
+                    ¿Quieres ser un músico profesional?
+                </h3>
+                <p class="appear">
+                    En el conservatorio la enseñanza es reglada, con tiempos de clases semanales que incluyen dos horas
+                    de
+                    lenguaje musical
+                    en grupos de no
+                    más de trece alumnos, 60 minutos de instrumento a la semana, dados de modo individual y otra hora de
+                    educación auditiva
+                    y vocal.
+                    <br><br>
+                    La obligatoriedad de ir a clase, además de la obtención de
+                    calificaciones oficiales al final de cada evaluación y un título acreditativo, son otras de las
+                    diferencias que tienen
+                    estos centros con respecto a la formación no oficial.
+                    <br><br>
+                    Nos encargaremos
+                    de darte una formación óptima para superar las pruebas de acceso y conseguir tu plaza, tanto en
+                    enseñanzas elementales
+                    como profesionales.
+                </p>
+                <div class="button__container">
+                    <a class="button appear" href="/contacto">
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="metodology" id="online">
+            <div class="metodology__background appear"></div>
+            <div class="metodology__block">
+                <h2 class="underline appear">Clases Online</h2>
+                <h3 class="appear">Metodología</h3>
+                <p class="appear">Sean cuales sean tus objetivos, con nuestras clases online
+                    podremos
+                    también ayudarte a conseguirlos, adaptándonos al tipo de enseñanza que
+                    se adapte más a tí, tanto oficial como no oficial.
+                    <br><br>
+                    Utilizamos tecnología avanzada en nuestras clases online, de tal modo que reúnan todas las
+                    herramientas
+                    necesarias
+                    para suplir las ventajas de una clase presencial:
+                    <br><br>
+                    1.- Equipo de sonido profesional, para que el sonido del instrumento llegue con completa nitidez al
+                    alumno.
+                    <br><br>
+                    2.- Plataforma profesional con varias cámaras integradas.
+                    <br><br>
+                    3.- Visor de partituras en línea.
+                </p>
+                <div class="button__container">
+                    <a class="button appear" href="/contacto">
+                        Contactanos
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+
+</body>
+
+
+</html>

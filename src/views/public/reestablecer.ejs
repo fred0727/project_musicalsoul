@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/header', { title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/index.css">
+    <link rel="stylesheet" href="/static/public/css/form.css">
+
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <div class="overlay nav__padding">
+        </div>
+        <section class="login__form nav__padding">
+            <%- include('./partials/restore-form'); %>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+    <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+
+</html>

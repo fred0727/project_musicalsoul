@@ -1,0 +1,151 @@
+main {
+  position: relative;
+}
+
+main section.about,
+main section.us,
+main section.brand {
+  padding: var(--p5) var(--p1);
+}
+
+main section.about p {
+  font-family: LatoItalic;
+  color: white;
+  font-size: var(--font-md);
+  margin-top: var(--m5);
+}
+
+main section.about {
+  background-color: var(--gray);
+}
+
+main section.about h2 {
+  margin-top: var(--m3);
+}
+
+main section.about p {
+  margin-top: var(--m1);
+  font-family: Lato;
+}
+
+main section.about div:last-child {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--m4);
+}
+
+main section.us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main section.us .us__image {
+  background-image: url("/static/public/images/juan.jpg");
+  width: 70%;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+main section.us.coord .us__image {
+  background-image: url("/static/public/images/aurora.jpeg");
+  width: 70%;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+main section.us h3 {
+  color: var(--yellow);
+  margin-top: var(--m2);
+}
+
+main section.us h2 {
+  margin-top: var(--m2);
+}
+
+main section.us hr {
+  margin: var(--m2) 0px;
+}
+
+main section.us p {
+  color: black;
+  font-size: var(--font-md);
+  font-family: LatoItalic;
+}
+
+main section.brand {
+  background-color: var(--yellow);
+  text-align: center;
+}
+
+main section.brand h2 {
+  color: white;
+}
+
+.overlay {
+  background-image: url("/static/public/images/home_page.jpg");
+}
+
+.goback {
+  font-size: var(--font-md);
+}
+
+.subscriptions__list li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--m1);
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  main section.about,
+  main section.us {
+    max-width: var(--max-width);
+    padding-left: var(--p-section);
+    padding-right: var(--p-section);
+  }
+  main section.about h2 {
+    font-size: var(--font-xxl);
+    margin-bottom: var(--m3);
+  }
+  main section.about p {
+    font-size: var(--font-lg);
+    margin-bottom: var(--m3);
+  }
+  main section.us {
+    flex-direction: row;
+    align-items: center;
+  }
+  main section.us .us__image {
+    background-size: cover;
+    width: 40%;
+    margin: var(--m1) 5rem;
+    height: 50vh;
+  }
+  main section.us.coord .us__image {
+    /* background-image: url("/static/public/images/aurora.jpeg"); */
+    background-size: cover;
+    width: 40%;
+    margin: var(--m1) 5rem;
+    height: 50vh;
+  }
+  main section.us div:last-child {
+    width: 100%;
+  }
+  main section.us div:last-child h3 {
+    font-size: var(--font-lg);
+  }
+  main section.us div:last-child h2 {
+    font-size: var(--font-xl);
+  }
+  main section.us div:last-child p {
+    font-size: var(--font-md);
+  }
+  main section.brand h2 {
+    font-size: 2em;
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', { title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/privacidad.css">
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <section class="hero nav__padding">
+            <h1 class="underline">Aviso de privacidad</h1>
+            <p>
+                MUSIC & SOUL se obliga a tratar confidencialmente todos aquellos datos, documentación y demás
+                información que hayan sido
+                suministrados por EL ALUMNO/A durante la vigencia del servicio prestado. Asimismo, se compromete a no
+                comunicar esta
+                información a ninguna otra persona o entidad, exceptuando los propios profesores asignados y sólo en la
+                medida necesaria
+                para la correcta ejecución de los servicios solicitados por EL ALUMNO/A.
+                <br><br>
+                El acuerdo de confidencialidad establecido en el presente pacto tendrá validez durante la vigencia del
+                servicio y
+                seguirá en vigor, al menos, durante 5 años más después de la extinción, por cualquier causa, del mismo.
+                <br><br>
+                MUSIC & SOUL informa a EL ALUMNO/A de que los datos personales recogidos, serán incorporados a un
+                fichero cuyo
+                responsable es MUSIC & SOUL, con la finalidad de prestar el servicio, entendiendo que la aceptación de
+                nuestra política
+                de privacidad implica su consentimiento para llevar a cabo dicho tratamiento.
+
+                EL ALUMNO/A tiene la posibilidad de ejercitar los derechos de acceso, rectificación, cancelación y
+                oposición, en
+                relación con sus datos personales, dirigiendo un escrito a la dirección de MUSIC & SOUL.
+                <br><br>
+                Respecto de los datos personales a los que MUSIC & SOUL tenga acceso como consecuencia de la aceptación
+                del servicio, se
+                entenderán facilitados de forma voluntaria por el ALUMNO/A, y sólo serán utilizados con la finalidad de
+                prestar aquél,
+                siguiendo en todo momento las instrucciones de EL ALUMNO/A, comprometiéndose MUSIC & SOUL a no
+                aplicarlos ni utilizarlos
+                para finalidad distinta de la pactada y a no comunicarlos a otras personas, así como a destruir los
+                soportes donde se
+                contengan dichos datos al finalizar el servicio, salvaguardando en todo caso las pruebas necesarias
+                respecto a las
+                actuaciones realizadas. En todo caso, los papeles de trabajo y el diseño o sistema de análisis serán
+                propiedad de MUSIC
+                & SOUL.
+                <br><br>
+                Asimismo, ambas partes se comprometen a adoptar las necesarias medidas de seguridad para la protección
+                de dichos datos
+                en el nivel que les corresponda de acuerdo con la regulación legal.
+            </p>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "dropdown.js"] }); %>
+
+</body>
+
+
+</html>

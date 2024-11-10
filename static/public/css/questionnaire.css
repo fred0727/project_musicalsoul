@@ -1,0 +1,59 @@
+.questionnaire {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionnaire .content {
+    background-color: white;
+    border-radius: var(--b1);
+    padding: var(--p1);
+    max-width: 90%;
+}
+
+.questionnaire .content h3 {
+    font-weight: bold;
+    font-size: var(--font-md);
+}
+
+.questionnaire .content a {
+    color: var(--yellow);
+    text-decoration: underline;
+}
+
+.questionnaire .question {
+    margin-top: var(--m1);
+    padding-top: var(--p1);
+    border-top: 1px solid black;
+}
+
+.questionnaire .question h2 {
+    font-size: var(--font-lg);
+    margin-bottom: var(--m1);
+}
+
+.questionnaire .question li {
+    border: 1px solid black;
+    border-radius: var(--b1);
+    padding: var(--p1);
+    margin-bottom: var(--m1);
+    cursor: pointer;
+    transition: background-color .3s, color .3s;
+    user-select: none;
+}
+
+.questionnaire .question li:hover {
+    background-color: black;
+    color: white;
+}
+
+

@@ -1,0 +1,58 @@
+main section.hero {
+  background: white;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+main section.hero hr {
+  width: 70%;
+}
+
+main section.hero h1 {
+  margin-top: var(--m5);
+}
+
+main section.hero p {
+  color: black;
+}
+main section.hero .hero__diploma {
+  margin: var(--m5) 0;
+}
+main section.hero .hero__diploma .hero__image {
+  width: 100%;
+  height: 250px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main section.hero .hero__diploma .hero__image--1 {
+  background-image: url("/static/public/images/abrsm.jpg");
+}
+
+main section.hero .hero__diploma .hero__image--2 {
+  background-image: url("/static/public/images/trinity.jpg");
+}
+
+main section.hero .hero__diploma .hero__image--3 {
+  background-image: url("/static/public/images/rockschool.jpg");
+}
+
+@media (min-width: 1024px) {
+  main section.hero .hero__diploma {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: var(--m5);
+    justify-items: center;
+    align-items: center;
+  }
+
+  main section.hero .hero__diploma p {
+    margin-top: 0;
+  }
+
+  main section.hero .hero__diploma .hero__image {
+    /* width: 400px; */
+  }
+}

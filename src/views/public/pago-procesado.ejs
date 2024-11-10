@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', {title: "Music & Soul | Pago procesado correctamente" }); %>
+
+<body>
+    <link rel="stylesheet" href="/static/public/css/index.css" />
+    <%- include('./partials/nav', { linkId: '/' }); %>
+    <main>
+        <div class="nav__padding" style="
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        ">
+            <h1 style="margin-top: var(--m2)">¡Gracias <%= data.name %> <%= data.surname %>!</h1>
+            <br />
+            <div>
+                <% if (cardConfirmation) { %>
+                <b>Su método de pago ha sido actualizado correctamente</b>
+                <% } else {%>
+                <b>Su pago ha sido procesado correctamente</b>
+                <% } %>
+            </div>
+            <br />
+            <div>
+                <% if (cardConfirmation) { %>
+                <b>Le enviaremos los datos con la confirmación por correo electrónico.</b>
+                <% } else {%>
+                <b>Le enviaremos una confirmación con su orden de pago por correo
+                    electrónico.</b>
+                <% } %>
+            </div>
+            <br />
+            <% if (subscriptions.length > 0 ) { %>
+            <h3>Detalle de su suscripción:</h3>
+            <ul class="subscriptions__list">
+                <% subscriptions.forEach(function (item) { %>
+                <li>
+                    <%= item.name %>
+                    <br />
+                    <%= item.price_description %> al mes
+                    <br />
+                    <%- item.description %> al mes
+                </li>
+                <%})%>
+            </ul>
+            <% } %>
+            <div>
+                <ul>
+                    <li style="text-align: center">
+                        Identificador de pago: <%= data.paymentId %>
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <div style="margin-bottom: var(--m2)">
+                <b><a href="/area" style="color: var(--yellow);">Ir a mi área de usuario</a></b>
+            </div>
+            <div style="margin-bottom: var(--m2)">
+                Si encuentra algún problema, contacte con
+                <b><a href="contacto@musicalmsoul.com">contacto@musicalmsoul.com</a></b>
+            </div>
+        </div>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %> <%-
+    include('./partials/scripts', { scripts: ["scripts.js", "appear.js",
+    "dropdown.js"] }); %>
+</body>
+
+</html>

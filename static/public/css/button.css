@@ -1,0 +1,47 @@
+button,
+.button {
+  appearance: none;
+  background-color: var(--yellow);
+  padding: var(--p1);
+  color: white;
+  border: 0;
+  border-radius: var(--b1);
+  margin: var(--m1-4) 0;
+  font-size: var(--font-md);
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.5s, transform 0.2s;
+  font-family: CabinBold;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.button:visited {
+  color: white;
+}
+
+button.alert,
+a.button.alert {
+  background-color: var(--lightgray);
+}
+
+button:hover,
+.button:hover {
+  background-color: var(--lightyellow);
+  transform: scale(1.01);
+}
+
+button:disabled {
+  background-color: var(--lightgray);
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  transform: none;
+  /* background-color: var(--yellow); */
+}
+
+button label,
+button .lds-dual-ring {
+  pointer-events: none;
+}

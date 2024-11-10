@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Lato";
+  src: url("/static/public/fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "LatoBold";
+  src: url("/static/public/fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "LatoItalic";
+  src: url("/static/public/fonts/Lato-Italic.ttf");
+}
+
+@font-face {
+  font-family: "CabinBold";
+  src: url("/static/public/fonts/Cabin-Bold.ttf");
+}
+
+/* @font-face {
+    font-family: 'cabinBoldItalic';
+     */

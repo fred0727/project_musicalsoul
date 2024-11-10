@@ -1,0 +1,51 @@
+<form id="client-signup" action="/registro" method="POST" enctype="multipart/form-data">
+    <h3>
+        Registrate en Music & Soul para afiliarte a suscripciones y realizar pagos
+    </h3>
+    <div class="form__control">
+        <label for="name">Nombre*</label>
+        <input name="name" required />
+    </div>
+    <div class="form__control">
+        <label for="surname">Apellido*</label>
+        <input name="surname" required />
+    </div>
+    <div class="form__control">
+        <label for="phone">Teléfono*</label>
+        <input name="phone" required />
+    </div>
+    <div class="form__control">
+        <label for="name">Email*</label>
+        <input name="email" type="email" required />
+    </div>
+    <div class="form__control">
+        <label for="name">Contraseña*</label>
+        <input name="password" type="password" required />
+    </div>
+    <p style="font-size: 16px; margin-bottom: 1rem; font-weight: bold;">
+        Luego de completar su registro tendrá que responder un cuestionario referente a los términos y condiciones de Music&Soul.
+    </p>
+    <div class="form__control">
+        <div class="checkbox">
+            <input type="checkbox" name="terms" required />
+            <a href="/terminos-condiciones" target="_blank">Aceptar términos y condiciones</a>
+        </div>
+    </div>
+    <div class="form__control">
+        <div class="checkbox">
+            <input type="checkbox" name="privacy" required />
+            <a href="/privacidad" target="_blank">Aceptar aviso de privacidad</a>
+        </div>
+    </div>
+    <% if (error === 'ER_DUP_ENTRY') { %>
+    <div class="form__error">
+        La dirección de correo ingresada se encuentra en uso.
+    </div>
+    <% } %>
+    <div class="form__submit">
+        <button type="submit">
+            <label>Registrarme</label>
+            <div class="lds-dual-ring"></div>
+        </button>
+    </div>
+</form>

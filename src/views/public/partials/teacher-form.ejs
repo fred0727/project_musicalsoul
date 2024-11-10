@@ -1,0 +1,121 @@
+<form id="teacher">
+    <input type="hidden" name="profile" value="TEACHER" />
+    <div class="form__control">
+        <label for="modalidad">Modalidad de clases</label>
+        <div class="select">
+            <select name="typeClass" required>
+                <option disabled selected>Seleccionar</option>
+                <option value="ONLINE">Clases online</option>
+                <option value="TEACHER">Clases presenciales en mi domicilio</option>
+                <option value="STUDENT">Clases presenciales en el domicilio del alumno</option>
+                <option value="STUDENTEACHER">Clases presenciales en mi domicilio y el domicilio del alumno</option>
+                <option value="ONLINETEACHER">Clases online y en mi domicilio</option>
+                <option value="ONLINESTUDENT">Clases online y en el domicilio del alumno</option>
+                <option value="ALL">Todos los tipos de clases</option>
+            </select>
+        </div>
+    </div>
+    <div class="form__control appear">
+        <label for="services">Clases</label>
+        <div class="select">
+            <select class="multi" name="services" id="multiServicesTeacher" placeholder="Seleccionar">
+                <option disabled selected value="Seleccionar">Seleccionar</option>
+                <% services.forEach(function (service) { %>
+                <option value="<%= service.id %>"><%= service.name %></option>
+                <% }) %>
+            </select>
+        </div>
+    </div>
+    <div class="form__control--group appear">
+        <div class="form__control appear">
+            <label for="name">Nombre*</label>
+            <input name="name" required />
+        </div>
+        <div class="form__control appear">
+            <label for="lastName">Apellidos*</label>
+            <input name="lastName" type="text" required />
+        </div>
+    </div>
+    <div class="form__control appear">
+        <label for="name">Correo*</label>
+        <input name="email" type="email" required />
+    </div>
+    <div class="form__control--group-phone appear">
+        <label for="phone">Teléfono móvil*</label>
+        <div class="form__control appear">
+            <input name="phone-code" type="tel" value="34" required />
+        </div>
+        <div class="form__control appear">
+            <input name="phone" type="tel" required />
+        </div>
+    </div>
+    <div class="form__control appear">
+        <label for="provinceId">Provincia*</label>
+        <div class="select">
+            <select name="provinceId" required>
+                <option disabled selected value="">Seleccionar</option>
+                <% provinces.forEach(function (service) { %>
+                <option value="<%= service.id %>"><%= service.name %></option>
+                <% }) %>
+            </select>
+        </div>
+    </div>
+    <div class="form__control--group appear">
+        <div class="form__control appear" required>
+            <label for="districtId">Distrito*</label>
+            <div class="select">
+                <select name="districtId" disabled required>
+                    <option selected disabled value="">Seleccionar</option>
+                </select>
+            </div>
+        </div>
+        <div class="form__control appear">
+            <label for="neighborhoodId">Barrio*</label>
+            <div class="select">
+                <select name="neighborhoodId" disabled required>
+                    <option selected disabled value="">Seleccionar</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form__control appear">
+        <label for="cp">Código Postal*</label>
+        <input name="cp" required />
+    </div>
+    <div class="form__control appear">
+        <label for="provinceId">Disponibilidad horaria*</label>
+        <div class="select">
+            <select class="multi" name="availableHours" id="multiScheduleTeacher" placeholder="Seleccionar">
+                <option disabled selected value="Seleccionar">Seleccionar</option>
+                <option value="1">Lunes</option>
+                <option value="2">Martes</option>
+                <option value="3">Miércoles</option>
+                <option value="4">Jueves</option>
+                <option value="5">Viernes</option>
+                <option value="6">Sábado</option>
+                <option value="7">Domingo</option>
+            </select>
+        </div>
+    </div>
+    <div class="form__control appear">
+        <label for="origin">¿Cómo nos has conocido?*</label>
+        <div class="select">
+            <select name="origin" required>
+                <option value="">Selecciona</option>
+                <option value="SOCIALES">Redes sociales</option>
+                <option value="WEBSITE">Página web</option>
+                <option value="PARTICULARES">Tus clases particulares</option>
+                <option value="SUPERPROF">Superprof</option>
+            </select>
+        </div>
+    </div>
+    <div class="form__control appear">
+        <div class="checkbox">
+            <input type="checkbox" name="terms" required />
+            <a href="/terminos-condiciones" target="_blank">Aceptar términos y condiciones</a>
+        </div>
+    </div>
+    <div class="form__submit">
+        <button type="submit" class="appear">Enviar</button>
+    </div>
+</form>

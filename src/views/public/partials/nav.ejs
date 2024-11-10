@@ -1,0 +1,19 @@
+<nav role="navigation">
+    <div>
+        <a href="/">
+            <img src="/static/images/logo.svg" />
+        </a>
+        <div class="burger">
+            <input type="checkbox" />
+            <span class="top"></span>
+            <span class="center"></span>
+            <span class="bottom"></span>
+            <div class="menu">
+                <%- include('./menu', { page: '/', shoppingCart: session.shoppingCart || { packs: [] } }); %>
+            </div>
+        </div>
+        <div class="menu__desktop">
+            <%- include('./menu', { page: '/', shoppingCart: session.shoppingCart || { packs: [] } }); %>
+        </div>
+    </div>
+</nav>

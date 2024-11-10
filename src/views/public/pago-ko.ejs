@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', {title: "Music & Soul | No econtrado" }); %>
+
+<body>
+  <link rel="stylesheet" href="/static/public/css/index.css" />
+  <%- include('./partials/nav', { linkId: '/' }); %>
+  <main>
+    <div class="nav__padding" style="
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        ">
+      <h1><%- title %></h1>
+      <% if (message) { %>
+      <br />
+      <div><b><%- message %></b></div>
+      <br />
+      <% } %>
+      <div>
+        Si tiene algún problema, contacte con
+        <b><a mailto="contacto@musicalmsoul.com">contacto@musicalmsoul.com</a></b>
+      </div>
+      <a href="<%- href %>" class="goback">Volver</a>
+    </div>
+  </main>
+  <%- include('./partials/footer', { page: '/' }); %> <%-
+    include('./partials/scripts', { scripts: ["scripts.js", "appear.js",
+    "dropdown.js"] }); %>
+  <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+</html>

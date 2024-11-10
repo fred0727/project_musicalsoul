@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', {title: title }); %>
+
+<body>
+    <link rel="stylesheet" href="/static/public/css/formacion.css" />
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <section class="hero nav__padding">
+            <!-- <div class="overlay nav__padding"></div> -->
+            <div class="hero__image"></div>
+            <div>
+                <h1 class="underline">Formación no oficial</h1>
+                <p class="hero__highlight">
+                    Los beneficios de la música no son exclusivos de la formación reglada
+                </p>
+                <p>
+                    Un niño explorando en su habitación con unas campanitas o con un
+                    pequeño xilófono, está experimentando y aprendiendo multitud de áreas,
+                    partiendo del juego, de la libertad y del interés… <br /><br />
+                    La música es apasionante, es divertida y es maravillosa, pero sería
+                    una pena acercarnos a ella como mera herramienta para alcanzar otras
+                    metas.
+                    <br /><br />
+                    Sólo disfrutarla nos puede reportar grandes cosas, no necesitamos
+                    conocer toda su teoría ni cursar estudios reglados y estructurados
+                    para nutrirnos de su esencia.
+                    <br /><br />
+                    Existen múltiples formas más informales para aprender (si es que
+                    meternos en un aula de conservatorio no es lo nuestro).
+                </p>
+            </div>
+        </section>
+        <section class="info">
+            <div>
+                <h2 class="underline">Clases individuales</h1>
+                    <div class="info__list">
+                        <span>Esta enseñanza:</span>
+                        <ul>
+                            <li>Está dirigida a aquellos padres que deseen que sus hijos aprendan a tocar un
+                                instrumento,
+                                sigan
+                                con la práctica del
+                                mismo o se inicien
+                                en el lenguaje musical, pero fuera de un plan oficial cerrado de clases y asignaturas
+                                complementarias.
+                            </li>
+                            <li>Da más libertad al alumno a la hora de organizar su horario y seguir el ritmo que él
+                                mismo
+                                se
+                                vaya marcando.</li>
+                        </ul>
+                        <div>
+                            <a class="button" href="/contacto">Contáctanos</a>
+                        </div>
+                    </div>
+            </div>
+            <div class="info__grid">
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/vista-superior-del-piano.svg" />
+                    </div>
+                    <span>PIANO</span>
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/violin-con-arco.svg" />
+                    </div>
+                    <span>VIOLÍN</span>
+
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/guitarra.svg" />
+                    </div>
+                    <span>GUITARRA</span>
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/flauta-transversal.svg" />
+                    </div>
+                    <span>FLAUTA TRAVESERA</span>
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/notas-musicales.svg" />
+                    </div>
+                    <span>LENGUAJE MUSICAL</span>
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/atril.svg" />
+                    </div>
+                    <span>IMPROVISACIÓN</span>
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/XMLID_717_.svg" />
+                    </div>
+                    <span>TEORÍA MUSICAL</span>
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/configuraciones.svg" />
+                    </div>
+                    <span>ARMONÍA</span>
+                </div>
+                <div>
+                    <div class="info__icon">
+                        <img src="/static/public/images/banda.svg" />
+                    </div>
+                    <span>ACOMPAÑAMIENTO</span>
+                </div>
+            </div>
+        </section>
+        <section class="kids">
+            <div>
+                <div class="kids__image"></div>
+            </div>
+            <div>
+                <h2 class="underline">Niños</h2>
+                <h3>
+                    ¿Cuáles son los beneficios de la música en los niños y niñas?
+                </h3>
+                <p>
+                    La música tiene efectos positivos en los más pequeños ya sea a través de un instrumento musical, del
+                    canto o del baile:
+                </p>
+                <ul>
+                    <li>Mejora la memoria, la atención y la concentración.</li>
+                    <li>Estimula su inteligencia y mejora la habilidad para resolver problemas matemáticos y
+                        razonamientos
+                        complejos.</li>
+                    <li>Es una manera de expresarse e incluso la expresión corporal del niño se estimula más.</li>
+                    <li>Introduce a los sonidos y significados de las palabras. </li>
+                    <li>Les hace más sociales, ya que les brinda la oportunidad de interactuar entre sí.</li>
+                    <li>Estimula la creatividad infantil.</li>
+                    <li>Invita al movimiento y mejora su estado físico.</li>
+                    <li>Mejora la salud y calma el dolor.</li>
+                    <li>Alivia el estrés, el miedo y la tristeza, y potencia la autoestima.</li>
+                    <li>Establece una rutina diaria.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="young-adults">
+            <div>
+                <div class="young-adults__image"></div>
+            </div>
+            <div>
+                <h2 class="underline">Jóvenes y adultos</h2>
+                <ul>
+                    <li>Enfocada a todos aquéllos que quieren fortalecer su relación con la música sin incorporarse a un
+                        programa oficial.
+                    </li>
+                    <li>Para ellos, se desarrolla una serie de alternativas en función de la edad, los intereses
+                        personales
+                        y el tiempo del
+                        que dispone cada uno.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "dropdown.js"] }); %>
+
+</body>
+
+</html>

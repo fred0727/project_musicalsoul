@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/static/css/bulma.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <% if (type === 0 && includePushNotifications) { %>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.SERVICE_WORKER_PARAM = { scope: '/static/js/' };
+            OneSignal.SERVICE_WORKER_PATH = 'static/js/OneSignalSDKWorker.js'
+            OneSignal.SERVICE_WORKER_UPDATER_PATH = 'static/js/OneSignalSDKUpdaterWorker.js'
+            OneSignal.init({
+                appId: "10427e98-3a9b-4f82-bb87-d91225afa818",
+                safari_web_id: "web.onesignal.auto.014ea808-90d0-46f9-a566-af81aa1c1278",
+                notifyButton: {
+                    enable: true,
+                },
+                allowLocalhostAsSecureOrigin: true,
+            });
+        });
+    </script>
+    <% } %>
+
+    <!-- If you use the default popups, use this. -->
+    <script src="https://kit.fontawesome.com/d76ac81976.js" crossorigin="anonymous"></script>
+</head>

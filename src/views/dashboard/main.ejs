@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header', { title: "Dashboard | Music & Soul", type: user.type, includePushNotifications: true }); %>
+
+<body>
+    <%- include('../partials/nav', { user }); %>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <%- include('../partials/aside', { user }); %>
+        </div>
+        <!-- <div class="column">
+            <article class="message is-dark">
+                <div class="message-body">
+                    Bienvenido <%= user.name %>
+                </div>
+            </article>
+        </div> -->
+        <!-- <div class="column">
+            <article class="message is-link is-medium">
+                <div class="message-header">
+                    Solicitudes de hoy
+                </div>
+                <div class="message-body">
+                    <%= last24h %>
+                </div>
+            </article>
+        </div> -->
+        <div class="column">
+            <div class="card">
+                <div class="card-content">
+                    <p class="title">
+                        <%= last24h %> <%= last24h > 1 ? 'solicitudes' : 'solicitud' %>
+                    </p>
+                    <p class="subtitle">
+                        En las últimas 24h
+                    </p>
+                </div>
+                <footer class="card-footer">
+                    <a href="/panel/dashboard/requests" class="card-footer-item">Ver Solicitudes</a>
+                </footer>
+            </div>
+        </div>
+        <div class="column"></div>
+    </div>
+
+    <script src="/static/js/nav.js"></script>
+</body>
+
+</html>

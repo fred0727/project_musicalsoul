@@ -1,0 +1,6 @@
+<% if (session.user.valid === 0 && session.user.type === "CLIENT") { %>
+<div class="message__banner">
+    <span>Debe confirmar su correo electrónico o no podrá realizar compras.</span>
+    <a href="/solicitar-validacion">Solicitar validación</a>
+</div>
+<% } %>

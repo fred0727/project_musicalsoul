@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', {title: "Music & Soul | No econtrado" }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/index.css">
+    <%- include('./partials/nav', { linkId: '/' }); %>
+    <main>
+        <div class="nav__padding"
+            style="min-height: 100vh; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+            <h1>404</h1>
+            <h1>¿Estás perdido?</h1>
+            <div>Página no encontrada</div>
+        </div>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+    <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+
+</html>

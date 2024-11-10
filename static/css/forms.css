@@ -1,0 +1,45 @@
+body#login {
+  background-image: url("/static/images/background__login.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+form.login {
+  width: 95%;
+}
+
+.login__container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login__container img.logo {
+  margin-bottom: var(--margin-bottom);
+}
+
+@media (min-width: 1024px) {
+  form.login {
+    width: 400px;
+  }
+  form.pack {
+    /* width: 600px; */
+    padding: auto 400px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+
+  /* form.pack button,
+  form.pack input {
+    width: 50%;
+  } */
+
+  form.pack .field .control {
+    display: flex;
+    justify-content: center;
+  }
+}

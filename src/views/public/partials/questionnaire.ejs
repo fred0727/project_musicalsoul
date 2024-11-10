@@ -1,0 +1,12 @@
+<% if (session.user.questionnaire === 0) { %>
+<div class="questionnaire nav__padding">
+    <div class="content">
+        <h3>Para utilizar la plataforma es necesario responder el siguiente cuestionario de forma satisfactoria.</h3>
+        <br />
+        Debe leer los <a href="/terminos-condiciones" target="_blank">términos y condiciones</a> para poder
+        completar el
+        cuestionario.
+        <div class="questionContainer"></div>
+    </div>
+</div>
+<% } %>

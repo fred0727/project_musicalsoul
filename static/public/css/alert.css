@@ -1,0 +1,34 @@
+.alert__container {
+  border: 1px solid var(--yellow);
+  padding: var(--p1);
+  border-radius: var(--b1);
+  background-color: white;
+  color: var(--gray);
+  font-family: Lato;
+  min-width: 90%;
+  max-width: 90%;
+  position: relative;
+}
+.alert__body {
+  font-size: var(--font-base);
+}
+.alert__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+@media (min-width: 1024px) {
+  .alert__container {
+    min-width: 30%;
+    max-width: 50%;
+  }
+  .alert__button__container {
+    display: flex;
+    justify-content: center;
+  }
+  .alert__container button {
+    align-self: flex-end;
+    min-width: 30%;
+    max-width: 40%;
+  }
+}

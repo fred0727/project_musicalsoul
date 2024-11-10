@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/header', { title: title }); %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRaRQNkgNAWeyEIlBowMB-I0_Wh7kqn4&callback=initMap&libraries=&v=weekly"
+        defer></script>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/contacto.css">
+    <link rel="stylesheet" href="/static/public/css/alert.css">
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <section class="hero nav__padding">
+            <article class="form">
+                <div class="form__header">
+                    <h2 class="appear">Deja que la música viva dentro de ti</h2>
+                </div>
+                <div class="form__buttons appear">
+                    <button id="studentButton" class="form__button--active">Soy estudiante</button>
+                    <button id="teacherButton">Soy profesor</button>
+                </div>
+                <div class="form__body" active="student">
+                    <%- include('./partials/student-form'); %>
+                    <%- include('./partials/teacher-form'); %>
+                </div>
+            </article>
+        </section>
+    </main>
+    <%- include('./partials/loader'); %>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "contact.js", "appear.js", "multiselect.js", "dropdown.js", "alert.js"] }); %>
+</body>
+
+
+</html>

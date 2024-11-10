@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/header', { title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/index.css">
+    <link rel="stylesheet" href="/static/public/css/form.css">
+
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <div class="overlay nav__padding">
+        </div>
+        <section class="nav__padding">
+            <div class="message">
+                <h1>Hemos reenviado el email para que pueda realizar la validación del mismo.</h1>
+            </div>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+    <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+
+</html>

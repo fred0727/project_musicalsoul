@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/header', { title: "Dashboard - Packs | Music & Soul", type: null, includePushNotifications: false }); %>
+
+<body>
+    <%- include('../../partials/nav'); %>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <%- include('../../partials/aside'); %>
+        </div>
+        <div class="column">
+            <form class="box pack" method="POST"
+                action="<%= pack.id ? `/panel/dashboard/packs/update/${pack.id}` : "/panel/dashboard/packs/create" %>"
+                enctype="multipart/form-data">
+                <h2 class="title"><%= pack.id ? "Actualizar pack" : "Crear pack" %></h2>
+                <input type="hidden" name="id" value="<%= pack.id || "" %>" />
+                <div class="field">
+                    <label class="label">Nombre*</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Nombre*" name="name" required
+                            value="<%= pack.name || "" %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Precio* (no incluir unidad)</label>
+                    <p class="control">
+                        <input class="input" type="number" step="0.01" placeholder="Precio*" name="price" required
+                            value="<%= pack.price || "" %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Tipo de pago*</label>
+                    <p class="control">
+                    <div class="select" style="width: 100%">
+                        <select name="subscription" style="width: 100%">
+                            <option value="0" <%= pack.subscription == 0 ? 'selected' : '' %>>Pago unico</option>
+                            <option value="1" <%= pack.subscription == 1? 'selected' : '' %>>Suscripción</option>
+                        </select>
+                    </div>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Descripción de precio*</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Descripción Precio*" name="price_description"
+                            required value="<%= pack.price_description || "" %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Duración de clase*</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Duración*" name="duration" required
+                            value="<%= pack.duration || "" %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Descripción de pack (opcional)</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Descripción (opcional)" name="description"
+                            value="<%= pack.description || "" %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Posición</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Posición" name="position"
+                            value="<%= pack.position || "" %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-success w-full">Enviar</button>
+                    </p>
+                </div>
+            </form>
+            <% if (pack.id) { %>
+            <form class="box" method="POST" action="/panel/dashboard/packs/delete/<%= pack.id %>"
+                onsubmit="alert('Seguro desea eliminar el pack?')" enctype="multipart/form-data">
+                <b>Si eliminas el pack, el cambio no es reversible.
+                    <br>Tenlo en cuenta para las suscripciones
+                    activas</b>
+                <input type="hidden" name="id" value="<%= pack.id || "" %>" />
+                <button class="button is-danger w-full" type="submit">Eliminar</button>
+            </form>
+            <% } %>
+        </div>
+    </div>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

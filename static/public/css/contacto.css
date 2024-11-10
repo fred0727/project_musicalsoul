@@ -1,0 +1,111 @@
+@import url("./form.css");
+@import url("./loader.css");
+
+main {
+  background-image: url("/static/public/images/rock.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main section.hero {
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+main section.hero .form__header {
+  width: 100%;
+  background-color: var(--yellow);
+  text-align: center;
+}
+
+main section.hero article h2 {
+  color: white;
+  padding: var(--p1);
+  font-size: var(--font-md);
+  width: 100%;
+}
+
+main section.hero article {
+  padding: 0;
+  background-color: #474747;
+}
+
+main section.hero article .form__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--g1);
+  width: 100%;
+  padding: 0 var(--p1);
+  margin-top: var(--m1);
+}
+
+main section.hero article .form__buttons button {
+  font-size: var(--font-base);
+  width: 100%;
+  box-shadow: none;
+  background-color: var(--gray);
+}
+
+main section.hero article form {
+  padding: var(--p1);
+  width: 100%;
+}
+
+main section.hero article .form__buttons button.form__button--active {
+  background-color: var(--yellow);
+  transform: scale(1.05);
+}
+
+main article .form__body {
+  width: 100%;
+}
+
+main article .form__body[active="student"] form#student {
+  display: block;
+}
+
+main article .form__body[active="student"] form#teacher {
+  display: none;
+}
+
+main article .form__body[active="teacher"] form#teacher {
+  display: block;
+}
+
+main article .form__body[active="teacher"] form#student {
+  display: none;
+}
+
+main article .form__body button {
+  align-self: flex-end;
+}
+
+main article {
+  overflow: hidden;
+}
+
+.form__body {
+  display: flex;
+  transition: transform 0.5s;
+}
+
+.form__body form {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* main section.hero article div:last-child {
+  margin-top: 0;
+} */
+
+@media (min-width: 1024px) {
+  main section.hero {
+    align-items: flex-end;
+  }
+  main section.hero article {
+    width: 50%;
+  }
+}

@@ -1,0 +1,18 @@
+<form id="client-login" action="/olvide-contrasena" method="POST" enctype="multipart/form-data">
+    <% if (sent) { %>
+    <h3>Hemos enviado un correo electrónico con un enlace para que reestablezca su contraseña.</h3>
+    <% } else { %>
+    <h3>
+        Introduzca el correo electrónico de su cuenta
+    </h3>
+    <% }%>
+    <div class="form__control">
+        <label for="name">Email*</label>
+        <input name="email" type="email" required <%= sent ? 'disabled' : '' %> />
+    </div>
+    <div class="form__submit">
+        <button type="submit" <%= sent ? 'disabled' : '' %>>
+            Reestablecer contraseña
+        </button>
+    </div>
+</form>

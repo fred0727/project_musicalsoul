@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/header', {title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/index.css">
+    <link rel="stylesheet" href="/static/public/css/area.css">
+    <%- include('./partials/nav', { linkId }); %>
+    <%- include('./partials/validation-alert'); %>
+    <main>
+        <section class="content nav__padding">
+            <div class="content__header">
+                <h1 class="underline">Actualizar método de pago</h1>
+                <p style="margin-top: var(--m2)">Para actualizar su método de pago es necesario hacer un cargo de 0€ en
+                    tu nuevo método de pago para poder
+                    confirmar el mismo</p>
+                <p class="content__message">
+                    Será redireccionado al TPV virtual para ingresar los datos de su nuevo método de pago.
+                </p>
+            </div>
+
+            <form id="payment" method="POST" action="<%= process.env.REDSYS_REDIRECT %>">
+                <input type="hidden" name="Ds_Signature" value="<%= payment.signature %>" />
+                <input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1" />
+                <input type="hidden" name="Ds_MerchantParameters" value="<%= payment.merchantParameters %>" />
+                <button type="submit">Confirmar cambio</button>
+            </form>
+
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+    <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+
+</html>

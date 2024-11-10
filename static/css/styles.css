@@ -1,0 +1,139 @@
+@import url("/static/css/forms.css");
+@import url("/static/css/navbar.css");
+@import url("/static/css/menu.css");
+
+:root {
+  --padding: 0.5rem 0.75rem;
+  --margin-bottom: 1rem;
+  --black: #1d2124;
+}
+
+table a {
+  color: black;
+}
+
+a {
+  user-select: none;
+  text-decoration: none;
+}
+
+aside {
+  margin-top: 3.25rem;
+  z-index: 10;
+}
+
+table {
+  padding: var(--padding);
+}
+
+table tr {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+table tbody tr:hover {
+  /* background-color: var(--black) !important; */
+  /* color: white !important; */
+}
+
+table tbody tr:hover a {
+  color: white;
+}
+
+td.collapsable,
+th.collapsable {
+  display: none;
+}
+
+td.collapsable,
+th.collapsable {
+  display: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.columns {
+  margin: 0;
+}
+
+.column.is-one-quarter {
+  transform: translate(-200vh, 0);
+  transition: transform 0.5s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+}
+
+table {
+  margin-bottom: 15px;
+}
+
+.column.is-one-quarter.active {
+  transform: translate(0, 0);
+  height: auto;
+}
+
+.dropdown-content {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.lesson {
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #4a4a4a;
+}
+
+.fabCustom {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 99;
+}
+
+.row.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-row-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  aside {
+    margin-top: 0;
+  }
+  .column.is-one-quarter {
+    transform: translate(0, 0);
+    width: 25%;
+    position: relative;
+  }
+  td.collapsable,
+  th.collapsable {
+    display: table-cell;
+  }
+  .lesson {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
+  .lesson div.row {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}

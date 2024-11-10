@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/header', { title: "Dashboard - Clases | Music & Soul", type: null, includePushNotifications: false }); %>
+
+<body>
+    <%- include('../../partials/nav'); %>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <%- include('../../partials/aside'); %>
+        </div>
+        <div class="column">
+            <form class="box pack" method="POST" action="/panel/dashboard/lessons" enctype="multipart/form-data">
+                <h2 class="title">Generar pauta de clase</h2>
+                <% if (user.type === "ADMIN") { %>
+                <div class="field">
+                    <label class="label">Una vez generada la pauta, el profesor será notificado a través del bot de
+                        telegram</label>
+                    <label class="label">En caso de dejar vacíos los campos de fecha/hora, el profesor será notificado
+                        cada
+                        48h para que determine la fecha y hora</label>
+                </div>
+                <div class="field">
+                    <label class="label">Escoger tipo de alumno</label>
+                    <div class="select" style="width: 100%">
+                        <select style="width: 100%" id="studentOptions">
+                            <option selected disabled>Escoger</option>
+                            <option value="registered">Registrado en la web</option>
+                            <option value="email">Usar email de alumno</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field" value="email" style="display: none">
+                    <label class="label">Email Alumno*</label>
+                    <input class="input" type="text" placeholder="Nombre alumno" name="clientName" />
+                    <input class="input" type="email" placeholder="Email Alumno" name="clientEmail" />
+                </div>
+                <% } %>
+                <div class="field" id="clientId" value="registered"
+                    style="<%= user.type === "ADMIN" ? 'display: none' : false %>">
+                    <label class="label" style="width: 100%">Alumno*</label>
+                    <div class="dropdown" style="width: 100%" id="client" name="clientId">
+                        <div class="dropdown-trigger" style="width: 100%">
+                            <div class="field" style="width: 100%">
+                                <p class="control is-expanded has-icons-right">
+                                    <input class="input" type="search" placeholder="Buscar alumno"
+                                        <%= user.type === 'TEACHER' && query.clientId ? 'disabled' : '' %>
+                                        style=" width: 100%"
+                                        value="<%= user.type === 'TEACHER' && query.clientId ? currentClient.name : '' %>"
+                                        defaultValue="<%= user.type === 'TEACHER' && query.clientId ? currentClient.id : '' %>" />
+                                    <span class="icon is-small is-right"><i class="fas fa-search"></i></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu" style="width: 100%">
+                            <div class="dropdown-content" style="width: 100%">
+                                <% clients.forEach(function (client) { %>
+                                <a class="dropdown-item" style="width: 100%"
+                                    id="<%= client.id %>"><%= client.name %></a>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% if (user.type === 'TEACHER' && query.clientId) { %>
+                <input type="hidden" value="<%= user.id %>" name="teacherId" />
+                <% } else { %>
+                <div class="field">
+                    <label class="label">Profesor*</label>
+                    <div class="dropdown" style="width: 100%" id="teacher" name="teacherId">
+                        <div class="dropdown-trigger" style="width: 100%">
+                            <div class="field" style="width: 100%">
+                                <p class="control is-expanded has-icons-right">
+                                    <input class="input" type="search" placeholder="Buscar profesor" required
+                                        style="width: 100%" />
+                                    <span class="icon is-small is-right"><i class="fas fa-search"></i></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu" style="width: 100%">
+                            <div class="dropdown-content" style="width: 100%">
+                                <% teachers.forEach(function (teacher) { %>
+                                <a class="dropdown-item" style="width: 100%"
+                                    id="<%= teacher.id %>"><%= teacher.name %></a>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <div class="field">
+                    <label class="label">Fecha inicio</label>
+                    <p class="control">
+                        <input class="input" type="datetime-local" name="startTime"
+                            min="<%= new Date().toISOString().split('.')[0].slice(0, -3) %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Fecha fin</label>
+                    <p class="control">
+                        <input class="input" type="datetime-local" name="endTime"
+                            min="<%= new Date().toISOString().split('.')[0].slice(0, -3) %>" />
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-success w-full" type="submit">Generar</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/dropdown.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<form id="client-login" action="/reestablecer" method="POST" enctype="multipart/form-data">
+    <% if (done) { %>
+    <h3>Su contraseña se ha reestablecido correctamente. Ingrese a su área de usuario con la nueva contraseña <br /> <a
+            href="/ingresar">Ingresar</a></h3>
+    <% } else if (!expired) { %>
+    <h3>
+        Introduzca su nueva contraseña
+    </h3>
+    <% } else { %>
+    <h3>
+        El enlace ha expirado, por favor solicite uno nuevo <br /><br />
+        <a href="/olvide-contrasena">Solicitar enlace</a>
+    </h3>
+    <% } %>
+    <div class="form__control">
+        <label for="name">Contraseña*</label>
+        <input type="hidden" name="id" value="<%= id %>" />
+        <input name="password" type="password" required <%= done || expired ? 'disabled' : '' %> />
+    </div>
+    <div class="form__submit">
+        <button type="submit" <%= done || expired ? 'disabled' : '' %>>
+            Reestablecer contraseña
+        </button>
+    </div>
+</form>

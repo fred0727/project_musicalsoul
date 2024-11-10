@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', {title: title }); %>
+
+<body>
+    <link rel="stylesheet" href="/static/public/css/precios.css" />
+    <link rel="stylesheet" href="/static/public/css/alert.css" />
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <section class="hero nav__padding">
+            <h1 class="underline appear">Precios</h1>
+            <p class="appear">Todas nuestras clases con <b>Matrícula Gratis.</b></p>
+            <div class="hero__grid">
+                <% packs.sort((a, b) => a.position - b.position).forEach(function (pack, index) { %>
+                <article class="appear">
+                    <span><%= pack.name %></span>
+                    <hr />
+                    <% if (pack.description) { %>
+                    <div class="hero__description"><%- pack.description %></div>
+                    <% } %>
+                    <div class="hero__prices"><%- pack.price_description %></div>
+                    <span><%- pack.duration %></span>
+                    <div class="hero__buttons">
+                        <a href="/contacto" class="button">Contáctanos</a>
+                        <form id="add__form">
+                            <input type="hidden" name="id" value="<%= pack.id %>" />
+                            <button class="button"
+                                type="submit"><%= pack.subscription ? "Suscribirme" : "Pagar" %></button>
+                        </form>
+                    </div>
+                </article>
+                <!-- Just for the grid -->
+                <% if (index > 1 && index % 4 === 0 && packs.length === 6) { %>
+                <article style="display: none;"></article>
+                <% } %>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js","alert.js", "appear.js", "dropdown.js", "payment.js"] }); %>
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/header', { title: "Dashboard - Clases | Music & Soul", type: null, includePushNotifications: false }); %>
+
+<body>
+    <%- include('../../partials/nav'); %>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <%- include('../../partials/aside'); %>
+        </div>
+        <div class="column">
+            <a class="button is-primary fabCustom" href="/panel/dashboard/lessons/create">Nueva</a>
+            <div class="tabs is-toggle is-right is-primary" style="align-items: center;">
+                <div class="subtitle" style="margin-bottom: 0;">Gestione sus clases</div>
+                <ul>
+                    <li class="<%= status.toLowerCase() === "pending" || status === '' ? 'is-active' : '' %>"><a
+                            href="?status=pending">Pendientes</a>
+                    </li>
+                    <li class="<%= status.toLowerCase() === "completed" ? 'is-active' : '' %>">
+                        <a href="?status=completed">Completadas</a>
+                    </li>
+                    <li class="<%= status.toLowerCase() === "canceled" ? 'is-active' : '' %>">
+                        <a href="?status=canceled">Canceladas</a>
+                    </li>
+                </ul>
+            </div>
+            <% rows.sort((a, b) => a.startTime - b.startTime).forEach((row) => { %>
+            <div class="box" status="<%= row.status %>">
+                <% if (!row.startTime && !row.endTime && row.status !== "CANCELED") { %>
+                <article class="message is-warning">
+                    <div class="message-body">
+                        No se ha determinado horario para esta clase
+                    </div>
+                </article>
+                <% } %>
+                <div class="lesson">
+                    <ul>
+                        <h3>
+                            Datos de la clase
+                        </h3>
+                        <li href="/panel/dashboard/teachers/<%= row.teacherId %>" colspan="2">
+                            <i>Profesor:</i> <br /> <b><%= row.teacherName %></b>
+                        </li>
+                        <% if (row.clientId) { %>
+                        <li href="/panel/dashboard/clients/<%= row.clientId %>" colspan="2">
+                            <i>Alumno:</i> <br /><b><%= row.clientName %></b>
+                        </li>
+                        <% } %>
+                        <% if (row.clientEmail) { %>
+                        <li href="/panel/dashboard/clients/<%= row.clientId %>">
+                            <i>Email Alumno:</i><br /> <b><%= row.clientEmail %></b>
+                        </li>
+                        <% } %>
+                    </ul>
+                    <form action="/panel/dashboard/lessons/update" method="POST" enctype="multipart/form-data">
+                        <div class="is-warning">
+                            <h3>Fecha de la clase</h3>
+                            <input type="hidden" value="<%= row.id %>" name="id" />
+                            <input type="hidden" name="timezone" value="<%= -new Date().getTimezoneOffset()/60 %>" />
+
+                            <% if (!row.startTime && !row.endTime) { %>
+                            <% } %>
+                            <div class="field">
+                                <i>
+                                    Fecha Inicio
+                                </i>
+                                <input class="input" type="datetime-local"
+                                    <%= row.status !== "PENDING" ? 'disabled' : ''%>
+                                    value="<%= row.startTime ? new Date(row.startTime).toISOString().substring(0, new Date(row.endTime).toISOString().length - 1) : null %>"
+                                    name="startTime" required />
+                            </div>
+                            <div class="field">
+                                <i>
+                                    Fecha Fin
+                                </i>
+                                <input class="input" type="datetime-local"
+                                    <%= row.status !== "PENDING" ? 'disabled' : ''%>
+                                    value="<%= row.endTime ? new Date(row.endTime).toISOString().substring(0, new Date(row.endTime).toISOString().length - 1) : null %>"
+                                    name="endTime"
+                                    min="<%= row.startTime ? new Date(row.startTime).toISOString().substring(0, new Date(row.endTime).toISOString().length - 1) : null %>"
+                                    max="<%= row.endTime ? new Date(new Date(row.endTime).getTime() + (60 * 60 * 3000)).toISOString().substring(0, new Date(row.endTime).toISOString().length - 1) : null %>"
+                                    required />
+                            </div>
+                            <% if (row.status !== "CANCELED" && row.status !== 'COMPLETED') { %>
+                            <button class="button" type="submit" style="width: 100%;">Guardar
+                                fechas</button>
+                            <% } %>
+                        </div>
+                    </form>
+                    <% if (row.status === 'COMPLETED' && row.observations) {%>
+                    <div>
+                        <h4><i>Observaciones:</i></h4>
+                        <p><%= row.observations %></p>
+                    </div>
+                    <%}%>
+                    <% if (row.status !== "CANCELED" && row.status !== 'COMPLETED') { %>
+                    <div class="row mt-4">
+                        <h3 class="h3">
+                            Estado de clase
+                        </h3>
+                        <div class="field">
+                            <label class="label">Estado actual de la clase:</label>
+                            <h4 class="subtitle"><%= lessonStatusMap[row.status] %></h4>
+                            <label>Deberá marcar como completada la clase una vez pasada la fecha de
+                                finalización.</label>
+                        </div>
+                    </div>
+
+                    <div class="row buttons mt-2">
+                        <% if (row.startTime && row.endTime && (new Date(row.endTime).getTime() < Date.now())) { %>
+                        <button class="button is-primary completeLesson" id="<%= row.id %>"
+                            name="<%= row.clientName %>">Se completó la clase</button>
+                        <% } %>
+                        <button class="button is-danger cancelLesson" id="<%= row.id %>"
+                            name="<%= row.clientName %>">Cancelar</button>
+                    </div>
+                    <% } %>
+
+                </div>
+            </div>
+            <% }); %>
+            <!-- <div id="calendar" rows="<%= JSON.stringify(rows) %>" teacherId="<%= user.id %>"></div> -->
+        </div>
+    </div>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+    <!-- <script src="/static/js/calendar.js"></script> -->
+</body>
+
+</html>

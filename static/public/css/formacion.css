@@ -1,0 +1,215 @@
+main section.hero {
+  align-items: flex-start;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+main section.hero .hero__image {
+  background-image: url("/static/public/images/playing-piano.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center right;
+  height: 400px;
+  width: 100%;
+  top: 90px;
+}
+
+main section.hero h1 {
+  margin-top: var(--m3);
+}
+
+main section.hero p.hero__highlight {
+  color: white;
+  background-color: var(--yellow);
+  padding: var(--p1);
+  border-radius: var(--b1);
+}
+
+main section.hero p {
+  color: black;
+}
+
+main section.info div.info__list {
+  margin-top: var(--m5);
+  font-size: var(--font-md);
+}
+
+main section.info div.info__list ul {
+  margin: var(--m3) var(--m4);
+}
+
+main section.info div.info__list ul li {
+  list-style-type: circle;
+  margin-bottom: var(--m3);
+}
+
+main section.info div.info__grid {
+  margin-top: var(--m4);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  grid-gap: var(--g1);
+}
+
+main section.info div.info__grid div {
+  border-radius: var(--b1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main section.info div.info__grid div.info__icon {
+  background-color: var(--yellow);
+  padding: var(--p1);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: var(--m1-4);
+}
+
+main section.info div.info__grid div:last-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+main section.info div.info__grid div span {
+  font-size: var(--font-xs);
+  font-family: LatoBold;
+}
+
+main section.kids {
+  background-color: var(--gray);
+}
+
+main section.kids div:first-child {
+  margin-bottom: var(--m3);
+}
+
+main section.kids .kids__image {
+  background-image: url("/static/public/images/teacher-giving-guitar-lessons-at-home-to-child@2x.png");
+  height: 350px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+main section.kids div h3 {
+  margin-top: var(--m5);
+  color: white;
+}
+
+main section.kids div:last-child p,
+main section.kids div:last-child ul {
+  color: white;
+  font-family: LatoItalic;
+  font-size: var(--font-md);
+  margin-top: var(--m3);
+}
+
+main section.kids div:last-child ul li {
+  list-style-type: circle;
+}
+
+main section.young-adults div:first-child {
+  margin-bottom: var(--m3);
+}
+
+main section.young-adults .young-adults__image {
+  background-image: url("/static/public/images/old-man.png");
+  height: 350px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+main section.young-adults ul {
+  color: black;
+  margin-top: var(--m4);
+}
+
+main section.young-adults ul li {
+  font-family: LatoItalic;
+  list-style-type: circle;
+}
+
+@media (min-width: 1024px) {
+  main section.hero {
+    width: 100%;
+    min-height: 100vh;
+  }
+  main section.hero .hero__image {
+    background-position: center;
+    /* display: none; */
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 150vh;
+    z-index: -1;
+  }
+
+  main section.hero .hero__image::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  main section.hero div:last-child {
+    width: 60%;
+  }
+
+  main section.hero div:last-child p:last-child {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: var(--p3);
+    margin-top: var(--p2);
+    border-radius: var(--b1);
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
+    font-size: var(--font-md);
+  }
+  main section.info div.info__grid {
+    grid-template-columns: repeat(3, 1fr);
+    width: 40%;
+  }
+  main section.info {
+    display: flex;
+    justify-content: space-between;
+  }
+  main section.info > div:first-child {
+    width: 50%;
+    margin-right: var(--m5);
+  }
+  main section.info > div:first-child button {
+    width: 30%;
+  }
+  main section.info div.info__grid div:last-child {
+    grid-column-start: auto;
+    grid-column-end: auto;
+  }
+  main section.kids,
+  main section.young-adults {
+    display: flex;
+    align-items: center;
+  }
+  main section.young-adults {
+    flex-direction: row-reverse;
+  }
+  main section.young-adults .young-adults__image {
+    margin-left: var(--m10);
+  }
+  main section.kids .kids__image {
+    margin-right: var(--m10);
+  }
+  main section.kids div:first-child {
+    width: 90%;
+  }
+  main section.young-adults div:first-child {
+    width: 100%;
+  }
+}

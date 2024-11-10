@@ -1,0 +1,43 @@
+<aside class="menu is-half">
+    <p class="menu-label">
+        General
+    </p>
+    <ul class="menu-list">
+        <li><a path="/panel/dashboard" href="/panel/dashboard" type="home">Dashboard</a></li>
+        <% if (user.type === 'TEACHER') { %>
+        <li><a path="/panel/dashboard/lessons" href="/panel/dashboard/lessons">Clases</a>
+        </li>
+        <li><a path="/panel/dashboard/students" href="/panel/dashboard/students">Alumnos</a></li>
+        <% } %>
+        <% if (user.type === 'ADMIN') { %>
+        <li><a path="/panel/dashboard/requests" href="/panel/dashboard/requests">Solicitudes</a>
+        </li>
+        <li><a path="/panel/dashboard/subscriptions" href="/panel/dashboard/subscriptions">Suscripciones</a>
+        </li>
+        <li><a path="/panel/dashboard/payments" href="/panel/dashboard/payments">Pagos</a>
+        </li>
+        <li><a path="/panel/dashboard/teachers" href="/panel/dashboard/teachers">Profesores</a>
+        </li>
+        <li><a path="/panel/dashboard/clients" href="/panel/dashboard/clients">Alumnos</a>
+        </li>
+        <li><a path="/panel/dashboard/packs|/panel/dashboard/packs/create|/panel/dashboard/packs/update|/panel/dashboard/packs/*"
+                href="/panel/dashboard/packs">Packs</a>
+        </li>
+        <% } %>
+        <li>
+        <li>
+            <form method="POST" action="/panel/logout" enctype="multipart/form-data">
+                <button class="button" type="submit" style="width: 100%">Cerrar Sesión</button>
+            </form>
+        </li>
+    </ul>
+    <!-- <p class="menu-label">
+        Transactions
+    </p>
+    <ul class="menu-list">
+        <li><a>Payments</a></li>
+        <li><a>Transfers</a></li>
+        <li><a>Balance</a></li>
+    </ul> -->
+
+</aside>

@@ -1,0 +1,34 @@
+<form id="client-login" action="/ingresar" method="POST" enctype="multipart/form-data">
+    <h3>
+        Ingresa en tu área de usuario para gestionar tus pagos y suscripciones.
+    </h3>
+    <div class="form__control">
+        <label for="name">Email*</label>
+        <input name="email" type="email" required />
+    </div>
+    <div class="form__control">
+        <label for="name">Contraseña*</label>
+        <input name="password" type="password" required />
+    </div>
+    <% if (!valid) { %>
+    <div class="form__error">
+        Los datos introducidos no son correctos.
+    </div>
+    <% } %>
+    <div class="form__control">
+        <label for="name"><a style="color: var(--lightgray)" href="/olvide-contrasena">Olvidé mi contraseña</a></label>
+    </div>
+    <div class="form__control--group">
+        <div class="form__submit">
+            <a class="button" href="/registro">
+                <label>Registrarme</label>
+            </a>
+        </div>
+        <div class="form__submit">
+            <button type="submit">
+                <label>Ingresar</label>
+                <div class="lds-dual-ring"></div>
+            </button>
+        </div>
+    </div>
+</form>

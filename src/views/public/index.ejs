@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/header', {title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/index.css">
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <div class="overlay nav__padding"></div>
+        <section class="hero nav__padding">
+            <h1 class="underline appear">
+                Deja que la música viva <br> dentro de ti
+            </h1>
+            <p class="appear">
+                Concebimos la música como el medio perfecto para poder expresar nuestras emociones, sin necesidad de
+                hablar y diciéndolo
+                todo al mismo tiempo.
+            </p>
+            <article class="appear">
+                <span class="appear">CLASE DE PRUEBA</span>
+                <hr class="appear" />
+                <div class="hero__prices appear">
+                    <strike>20€</strike>
+                    15€
+                </div>
+                <span class="appear">1 hora</span>
+                <div class="hero__cta appear">
+                    <a class="button" href="/contacto">Reserva tu clase</a>
+                    <a class="button" href="/precios">Conoce nuestros packs</a>
+                </div>
+            </article>
+        </section>
+        <section class="about">
+            <h2 class="appear">
+                ¿Quiénes somos?
+            </h2>
+            <p class="appear">
+                <span class="highlight">Music & Soul</span> es una <span class="highlight">plataforma de formación
+                    musical</span> ideal para que los alumnos puedan construir bases
+                sólidas y se
+                preparen para desarrollar una carrera musica.
+                <br>
+                Sin importar el curso que elijas, te garantizamos que nuestros profesores son igual de apasionados que
+                tú.
+                <br>
+                Estamos presentes con más de 70 profesores y contamos con más de 150 alumnos en Coruña, Alicante,
+                Barcelona, Cádiz,
+                Madrid, Pamplona, Sevilla y Valencia.
+            </p>
+            <br>
+            <br>
+            <h2 class="appear">
+                ¿Quiénes son nuestros alumnos?
+            </h2>
+            <p class="appear">
+                Nuestros alumnos son niños, adolescentes y adultos entusiastas de la música, que disponen como mínimo de
+                1
+                hora a la
+                semana para cultivar su amor por la música, ya sea como afición o carrera. Ofrecemos clases de 6
+                instrumentos diferentes
+                además de canto, acompañamiento, armonía, lenguaje musical, teoría musical, improvisación, repentización
+                y
+                transporte.
+            </p>
+            <div class="appear">
+                <img src="/static/public/images/negra_blanca.svg" />
+            </div>
+        </section>
+        <section class="us">
+            <div class="us__image appear">
+            </div>
+            <div>
+                <div>
+                    <h3 class="appear">Gerente</h3>
+                    <h2 class="appear">Juan Carlos Salazar Rico</h2>
+                    <hr class="appear" />
+                    <p class="appear">
+                        Apasionado de la música, más concretamente de la música para piano, en la que estoy
+                        especializado y
+                        a la
+                        que, por
+                        suerte, seguiré dedicando el resto de mi vida.
+                        <br><br>
+                        Obtuve el título Profesional en la especialidad de piano con las calificaciones más altas de mi
+                        Grado en
+                        Progreso
+                        Musical, (centro que cuenta con la autorización oficial de la Comunidad de Madrid como Centro
+                        Superior
+                        de Enseñanza
+                        Musical) donde tuve la oportunidad y el privilegio de poder desarrollarme como músico con
+                        Verónica
+                        Metakovskaya, gran
+                        pianista rusa, brillante como músico, docente y escritora.
+                        <br><br>
+                        Mi pasión por la docencia se remonta a algo más de diez años, durante los cuales he tenido el
+                        privilegio
+                        de poder formar
+                        a niños y adultos de todas las edades.
+                        <br><br>
+                        Concibo la música como el medio perfecto para poder expresar nuestras emociones... es un tesoro
+                        que
+                        tenemos que buscar
+                        en nuestro interior y como todo tesoro guarda una enorme recompensa.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+        <section class="us coord">
+            <div class="us__image appear">
+            </div>
+            <div>
+                <div>
+                    <h3 class="appear">Coordinadora</h3>
+                    <h2 class="appear">Aurora Martínez</h2>
+                    <hr class="appear" />
+                </div>
+            </div>
+
+        </section>
+        <section class="brand">
+            <h2 class="appear">Calidad y servicio</h2>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+    <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+
+</html>

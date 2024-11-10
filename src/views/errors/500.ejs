@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <%- include('../public/partials/header', {title: "Music & Soul | Error de Servidor" }); %>
+    <link rel="stylesheet" href="/static/public/css/index.css">
+    <%- include('../public/partials/nav', { linkId: '/', }); %>
+    <main>
+        <div class="nav__padding"
+            style="min-height: 100vh; display: flex; justify-content: center; flex-direction: column; align-items: center; text-align: center;">
+            <h1>500</h1>
+            <h1>Hemos tenido un error procesando su solicitud</h1>
+            <div>Intente mas tarde, si el error persiste, contacte al administrador.</div>
+        </div>
+    </main>
+    <%- include('../public/partials/footer', { page: '/' }); %>
+    <%- include('../public/partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+    <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+
+</html>

@@ -1,0 +1,21 @@
+main section.hero {
+  background: white;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+main section.hero h1 {
+  margin-top: var(--m5);
+}
+
+main section.hero p.message {
+  margin-top: var(--m5);
+}
+
+main section.hero p {
+  color: black;
+  font-family: Lato;
+  margin-bottom: var(--m5);
+  margin-top: var(--m1);
+}

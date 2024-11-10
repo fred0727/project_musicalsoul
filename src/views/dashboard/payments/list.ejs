@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/header', { title: "Dashboard - Packs | Music & Soul", type: null, includePushNotifications: false }); %>
+
+<body>
+    <%- include('../../partials/nav'); %>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <%- include('../../partials/aside'); %>
+        </div>
+        <div class="column">
+            <div class="box">
+                <div class="table-container">
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th><abbr>Identificador</abbr></th>
+                                <th><abbr>Cliente</abbr></th>
+                                <th><abbr>Email Cliente</abbr></th>
+                                <th><abbr>Concepto</abbr></th>
+                                <th><abbr>Total</abbr></th>
+                                <th><abbr>Fecha</abbr></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% rows.sort((a, b) => a.position - b.position).forEach((row) => { %>
+                            <tr class="row">
+                                <td>
+                                    <%= row.id %>
+                                </td>
+                                <td>
+                                    <%= row.clientName %>
+                                </td>
+                                <td>
+                                    <%= row.clientEmail %>
+                                </td>
+                                <td>
+                                    <%= params.paymentTypeMap[row.paymentType] %>
+                                </td>
+                                <td>
+                                    <%= `${row.total.substring(0, row.total.length - 2) || 0}€` %>
+                                </td>
+                                <td>
+                                    <%= `${new Date(row.timestamp).toLocaleTimeString()} - ${new Date(row.timestamp).toLocaleDateString()}` %>
+                                </td>
+                            </tr>
+                            </tr>
+                            <% }); %>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

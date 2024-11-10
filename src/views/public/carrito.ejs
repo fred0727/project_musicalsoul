@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', { title: title }); %>
+
+<body>
+    <link rel="stylesheet" href="/static/public/css/carrito.css" />
+    <link rel="stylesheet" href="/static/public/css/form.css" />
+    <link rel="stylesheet" href="/static/public/css/alert.css" />
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <%- include('./partials/validation-alert'); %>
+        <section class="hero nav__padding">
+            <h1 class="underline">Carrito de compras</h1>
+        </section>
+        <section class="list">
+            <% if (session.shoppingCart.packs.length == 0) { %>
+            <h2>No tiene productos en el carrito.</h2>
+            <p>Puede agregarlos en el apartado <a href="/precios"><b>precios</b></a></p>
+            <% } else { %>
+            <% if (session.user.type !== 'CLIENT') { %>
+            <h3>Debe <a href="/registro">registrarse</a> o <a href="/ingresar">iniciar sesión</a> para hacer su pedido
+            </h3>
+            <% }  %>
+            <form id="payment" method="POST" action="<%= process.env.REDSYS_REDIRECT %>">
+
+                <% if (session.user.valid && session.user.type === "CLIENT") { %>
+                <input type="hidden" name="Ds_Signature" value="<%= payment.signature %>" />
+                <input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1" />
+                <input type="hidden" name="Ds_MerchantParameters" value="<%= payment.merchantParameters %>" />
+                <% } else { %>
+                    <h3>No podrá concluir su pedido si su registro no está validado. Por favor verifique su email y valide su registro.</h3>
+                <% } %>
+                <% if (session.user.type === "CLIENT") { %>
+                <div>
+                    <ul>
+                        <li>
+                            <h3>Datos de su pedido</h3>
+                            <div class="form__control white">
+                                <label for="name">Nombre</label>
+                                <input name="name" required
+                                    value="<%= session.user.type === 'CLIENT' ? session.user.name : '' %>" disabled />
+                            </div>
+                            <div class="form__control white">
+                                <label for="name">Email</label>
+                                <input type="email" name="email" required
+                                    value="<%= session.user.type === 'CLIENT' ? session.user.email : '' %>" disabled />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <% } %>
+                <div>
+                    <ul>
+                        <li>
+                            <h3>Resumen de su pedido</h3>
+                            <h4>Artículos que añadió al carrito</h4>
+                            <% session.shoppingCart.packs.forEach(function (pack, index, self) { %>
+                            <div class="cart__item">
+                                <div>
+                                    <h4><%= pack.name %></h4>
+                                </div>
+                                <div class="cart__delete">
+                                    <button class="cart__delete__button" pack_id="<%= pack.id %>">
+                                        <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            width="18px" height="18px">
+                                            <path
+                                                d="M 10 2 L 9 3 L 5 3 C 4.4 3 4 3.4 4 4 C 4 4.6 4.4 5 5 5 L 7 5 L 17 5 L 19 5 C 19.6 5 20 4.6 20 4 C 20 3.4 19.6 3 19 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 20 C 5 21.1 5.9 22 7 22 L 17 22 C 18.1 22 19 21.1 19 20 L 19 7 L 5 7 z M 9 9 C 9.6 9 10 9.4 10 10 L 10 19 C 10 19.6 9.6 20 9 20 C 8.4 20 8 19.6 8 19 L 8 10 C 8 9.4 8.4 9 9 9 z M 15 9 C 15.6 9 16 9.4 16 10 L 16 19 C 16 19.6 15.6 20 15 20 C 14.4 20 14 19.6 14 19 L 14 10 C 14 9.4 14.4 9 15 9 z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <% if (pack.description) { %>
+                                <div>
+                                    <label>Descripción</label>
+                                    <span><%- pack.description %></span>
+                                </div>
+                                <% } %>
+                                <div>
+                                    <label>Duración de cada clase</label>
+                                    <span> <%= (() => {
+
+                                        const hours = pack.duration / 3600000
+                                        switch (hours) {
+                                            case 0.5:
+                                                return '30 minutos'
+                                            case 1.5:
+                                                return 'Hora y media'
+                                            case 1:
+                                                return '1 hora'
+                                            case 0.75:
+                                                return '45 minutos'
+                                        }
+                                    })() %></span>
+                                </div>
+                                <div>
+                                    <label>Tipo de pago</label>
+                                    <div>
+                                        <span><%= pack.subscription ? "Suscripción" : "Pago Único" %></span>
+                                    </div>
+                                </div>
+                                <div class="cart__price"><%= pack.price %>€</div>
+                            </div>
+                            <% }); %>
+                        </li>
+                        <li class="cart__total"><label>Total a pagar inmediatamente</label>
+                            <span><b><%= total %>€</b></span>
+                        </li>
+                        <% if (subscriptionsTotal > 0) { %>
+                        <li class="cart__total">
+                            <label>Total a pagar primero de cada mes</label>
+                            <span><b><%= subscriptionsTotal %>€</b></span>
+                        </li>
+                        <% } %>
+                    </ul>
+                    <% if (total === 0) { %>
+                    <div class="cart__total__explanation">
+                        Realizaremos un cargo de 0€ en su tarjeta para confirmar la misma y cargar las suscripciones que
+                        des en alta el primero de cada mes.
+                    </div>
+                    <% } %>
+                    <div class="form__control">
+                        <div class="checkbox">
+                            <input type="checkbox" name="terms" required />
+                            <a href="/terminos-condiciones" target="_blank">Aceptar términos y condiciones</a>
+                        </div>
+                    </div>
+                    <h3 style="text-align: justify; margin-bottom: 1rem;">¡IMPORTANTE! Una vez termine su pago en la pasarela de pagos de Redsys, debe ser redireccionado usando el botón CONTINUAR a la web de Music&Soul. <b>Si no recibes un mail con un comprobante de pago, no figurará como procesado.</b></h3>
+                    <div class="form__control">
+                        <button
+                            <%= session.user.type !== 'CLIENT' || !session.user.valid ? 'disabled' : '' %>>Ir a pasarela de pago</button>
+                    </div>
+                    <!-- <div class="form__control">
+                            <button type="button" id="empty">Vaciar carrito</button>
+                        </div> -->
+                </div>
+            </form>
+            <% } %>
+
+        </section>
+    </main>
+    <%- include('./partials/loader'); %> <%- include('./partials/footer', {
+    page: '/' }); %> <%- include('./partials/scripts', { scripts: ["scripts.js",
+    "appear.js", "dropdown.js", "alert.js", "payment.js"] }); %>
+</body>
+
+</html>

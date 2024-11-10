@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', { title: title }); %>
+
+<body>
+    <link rel="stylesheet" href="/static/public/css/carrito.css" />
+    <link rel="stylesheet" href="/static/public/css/form.css" />
+    <link rel="stylesheet" href="/static/public/css/alert.css" />
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <section class="hero nav__padding">
+            <h1 class="underline">Resumen de pago</h1>
+        </section>
+        <section class="list">
+            <h3>Datos de su pedido</h3>
+            <% if (session.shoppingCart.packs.length > 0) { %>
+            <div>
+                <ul>
+                    <li>
+                        <h4>Datos personales</h4>
+                        <div class="list__personal__info">
+                            <div class="list__personal__info__column">
+                                <span>Nombre Cliente:</span><b data-cy="name"><%= (session.shoppingCart.name) %></b>
+                            </div>
+                            <div class="list__personal__info__column">
+                                <span>Email Cliente:</span><b data-cy="email"><%= (session.shoppingCart.email) %></b>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <% session.shoppingCart.packs.forEach(function (pack, index, self)
+              { %>
+                        <div>
+                            <div>
+                                <h4><%= pack.name %></h4>
+                            </div>
+                            <% if (pack.description) { %>
+                            <div>
+                                <label>Descripción</label>
+                                <span><%- pack.description %></span>
+                            </div>
+                            <% } %>
+                            <div>
+                                <label>Duración</label>
+                                <span> <%= pack.duration %></span>
+                            </div>
+                            <div>
+                                <label>Tipo de pago</label>
+                                <div>
+                                    <span><%= pack.subscription ? "Suscripción" : "Pago Único"
+                      %></span>
+                                </div>
+                            </div>
+                            <div class="cart__price"><%= pack.price %>€</div>
+                            <% if (index !== self.length - 1) { %>
+                            <hr />
+                            <% } %>
+                        </div>
+                        <% }); %>
+                    </li>
+                    <li class="cart__total">
+                        <label>Total</label>
+                        <span><b><%= session.shoppingCart.packs.reduce((acc, current) =>
+                  current.price + acc, 0) %>€</b></span>
+                    </li>
+                </ul>
+                <form id="payment" method="POST" action="<%= process.env.REDSYS_REDIRECT %>">
+                    <div class="form__control">
+                        <div class="checkbox">
+                            <input type="checkbox" name="terms" required />
+                            <a href="/terminos-condiciones" target="_blank">Aceptar términos y condiciones</a>
+                        </div>
+                    </div>
+                    <input type="hidden" name="Ds_Signature" value="<%= payment.signature %>" />
+                    <input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1" />
+                    <input type="hidden" name="Ds_MerchantParameters" value="<%= payment.merchantParameters %>" />
+                    <div class="form__control--group">
+                        <div class="form__control">
+                            <button type="submit">Comprar</button>
+                        </div>
+                        <div class="form__control">
+                            <a class="button"
+                                href='/carrito?name=<%= session.shoppingCart.name %>&email=<%= session.shoppingCart.email %>'>Modificar
+                                mi pedido</a>
+                        </div>
+                    </div>
+                    <!-- <div class="form__control">
+                        <button type="button" id="empty">Vaciar carrito</button>
+                    </div> -->
+                </form>
+            </div>
+            <% } %>
+        </section>
+    </main>
+    <%- include('./partials/loader'); %> <%- include('./partials/footer', {
+    page: '/' }); %> <%- include('./partials/scripts', { scripts: ["scripts.js",
+    "appear.js", "dropdown.js", "alert.js", "payment.js"] }); %>
+</body>
+
+</html>

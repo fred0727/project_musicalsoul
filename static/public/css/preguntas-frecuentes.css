@@ -1,0 +1,26 @@
+main section.hero {
+  background: white;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+main section.hero h1 {
+  margin-top: var(--m5);
+}
+
+main section.hero ul {
+  margin-top: var(--m4);
+}
+
+main section.hero p {
+  margin-top: var(--m2);
+  color: black;
+  font-family: Lato;
+}
+
+main section.hero li {
+  margin-bottom: var(--m5);
+  font-family: Lato;
+  font-size: var(--font-lg);
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header', {title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/titulos.css">
+    <%- include('./partials/nav', { linkId }); %>
+    <main>
+        <section class="hero nav__padding">
+            <h1 class="underline appear">Diplomas en interpretación musical</h1>
+            <p class="appear">
+                Te daremos la formación que necesitas para poder obtener diplomas oficiales con cualquiera de los
+                siguientes proveedores
+                de exámenes:
+            </p>
+            <div class="hero__diploma">
+                <div class="hero__image hero__image--1 appear"></div>
+                <p class="appear">
+                    La Associated Board of the Royal Schools of Music (ABRSM) es un proveedor de exámenes y evaluación
+                    de música por niveles
+                    creado en Reino Unido
+                    para centros de estudios musicales basados en la práctica de la ejecución musical y exportado a
+                    noventa y tres países,
+                    incluido España.
+                    <br><br>
+                    Cuenta con el respaldo de las Reales Escuelas de Música inglesas. Sus titulaciones están reconocidas
+                    en más de 90 países
+                    de todo el mundo y
+                    otorga una certificación oficial de tus estudios musicales con nosotros.
+                </p>
+            </div>
+            <hr class="appear" />
+            <div class="hero__diploma appear">
+                <div class="hero__image hero__image--2 appear"></div>
+                <p>
+                    Trinity College London (TCL) es una junta examinadora con sede en Londres, Reino Unido, que ofrece
+                    certificados
+                    oficiales de la disciplina musical en la
+                    que el alumno desee desarrollarse, en más de 70 países en todo el mundo.
+                    Se fundó como la junta de exámenes externos del Trinity College of Music (que hoy forma parte del
+                    Conservatorio de
+                    Música y Danza Trinity Laban ) y comenzó a ofrecer exámenes de música a estudiantes externos.
+                </p>
+            </div>
+            <hr class="appear" />
+            <!-- <div class="hero__diploma appear">
+                <div class="hero__image hero__image--3 appear"></div>
+                <p>
+                    Rockschool una organización examinadora establecida en el Reino Unido desde 1991 y ofrece
+                    titulaciones acreditadas en
+                    música moderna para guitarra eléctrica y
+                    acústica, bajo, batería, piano, teclados, voz y ukelele, hechas a la medida del músico
+                    contemporáneo, desde grados de
+                    iniciación hasta títulos superiores.
+                    Sus diplomas son válidos en el contexto del Tratado de Bolonia de la Unión Europea e integrados en
+                    el Marco Europeo de
+                    Titulaciones (EQF -European Qualifications Framework) independientemente de su edad o capacidad
+                    musical.
+                </p>
+            </div> -->
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js"] }); %>
+
+</body>
+
+
+</html>

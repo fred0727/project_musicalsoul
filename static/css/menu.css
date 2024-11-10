@@ -1,0 +1,7 @@
+.menu-list a.is-active {
+  background: var(--black);
+}
+
+ul.menu-list li {
+  margin-bottom: 10px;
+}

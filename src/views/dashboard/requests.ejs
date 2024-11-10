@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header', { title: "Dashboard - Requests | Music & Soul", type: null, includePushNotifications: false }); %>
+
+<body>
+    <%- include('../partials/nav'); %>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <%- include('../partials/aside', { user }); %>
+        </div>
+        <div class="column">
+            <div class="box">
+                <div class="table-container">
+                    <h2 class="subtitle">Solicitudes de profesores</h2>
+                    <table class="table is-striped">
+                        <thead>
+                            <tr>
+                                <th><abbr title="Name">Nombre</abbr></th>
+                                <th class="collapsable">Correo</th>
+                                <th><abbr title="Telf">Teléfono</abbr></th>
+                                <!-- <th class="collapsable"><abbr title="Procedencia">Procedencia</abbr></th> -->
+                                <th class="collapsable"><abbr title="Tipo">Tipo de clase</abbr></th>
+                                <th class="collapsable"><abbr title="Fecha">Fecha</abbr></th>
+                                <th><abbr title="Solicitud">Acciones</abbr></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% rows.filter(row => row.profile === 'Profesor').forEach((row) => { %>
+                            <tr class="row request" data="<%= JSON.stringify(row) %>">
+                                <td><%= row.name %></td>
+                                <td class="collapsable">
+                                    <%= row.email %>
+                                </td>
+                                <td>
+                                    <a href="https://wa.me/<%= row.phone %>"><%= row.phone %></a>
+                                </td>
+                                <!-- <td class="collapsable">
+                                                        <%= row.origin %>
+                                                    </td> -->
+                                <td class="collapsable">
+                                    <%= row.typeClass %>
+                                </td>
+                                <td class="collapsable">
+                                    <%= new Date(row.created_at || row.timestamp).toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <button class="button registerTeacher">Registrar</button>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <nav class="pagination is-right" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous"
+                        <%= page > 1 ? "href=/panel/dashboard/requests?page=" + (+page - 1) : "disabled" %>>Anterior</a>
+                    <a class="pagination-next"
+                        <%= page < count / 10 ? "href=/panel/dashboard/requests?page=" + (+page + 1) : "disabled" %>>Siguiente</a>
+                    <ul class="pagination-list">
+                        <h6 class="subtitle is-6">Página <%= page %> | Mostrando <%= rows.length %> resultados de
+                            <%= count %></h6>
+                    </ul>
+                    </ul>
+                </nav>
+            </div>
+            <div class="box">
+                <div class="table-container">
+                    <h2 class="subtitle">Solicitudes de alumnos</h2>
+                    <table class="table is-striped">
+                        <thead>
+                            <tr>
+                                <th><abbr title="Name">Nombre</abbr></th>
+                                <th><abbr title="Telf">Teléfono</abbr></th>
+                                <!-- <th class="collapsable"><abbr title="Procedencia">Procedencia</abbr></th> -->
+                                <th class="collapsable"><abbr title="Tipo">Tipo de clase</abbr></th>
+                                <th class="collapsable"><abbr title="Fecha">Fecha</abbr></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% rows.filter(row => row.profile === 'Alumno').forEach((row) => { %>
+                            <tr class="row request" data="<%= JSON.stringify(row) %>">
+                                <td><%= row.name %></td>
+                                <td>
+                                    <a href="https://wa.me/<%= row.phone %>"><%= row.phone %></a>
+                                </td>
+                                <!-- <td class="collapsable">
+                                                                        <%= row.origin %>
+                                                                    </td> -->
+                                <td class="collapsable">
+                                    <%= row.typeClass %>
+                                </td>
+                                <td class="collapsable">
+                                    <%= new Date(row.created_at || row.timestamp).toLocaleDateString() %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <nav class="pagination is-right" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous"
+                        <%= page > 1 ? "href=/panel/dashboard/requests?page=" + (+page - 1) : "disabled" %>>Anterior</a>
+                    <a class="pagination-next"
+                        <%= page < count / 10 ? "href=/panel/dashboard/requests?page=" + (+page + 1) : "disabled" %>>Siguiente</a>
+                    <ul class="pagination-list">
+                        <h6 class="subtitle is-6">Página <%= page %> | Mostrando <%= rows.length %> resultados de
+                            <%= count %></h6>
+                    </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

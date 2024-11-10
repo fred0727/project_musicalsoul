@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/header', { title: "Dashboard - Suscripciones | Music & Soul", type: null, includePushNotifications: false }); %>
+
+<body>
+    <%- include('../../partials/nav'); %>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <%- include('../../partials/aside'); %>
+        </div>
+        <div class="column">
+            <div class="box">
+                <div class="table-container">
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th><abbr>ID Cliente</abbr></th>
+                                <th><abbr>Cliente</abbr></th>
+                                <th><abbr>Pack</abbr></th>
+                                <th><abbr>Precio</abbr></th>
+                                <th><abbr>Fecha Inicio</abbr></th>
+                                <th><abbr>Opciones</abbr></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% rows.sort((a, b) => a.position - b.position).forEach((row) => { %>
+                            <tr class="row">
+                                <td>
+                                    <%= row.clientId %>
+                                </td>
+                                <td>
+                                    <%= row.clientName %>
+                                </td>
+                                <td>
+                                    <%= row.packName %>
+                                </td>
+                                <td>
+                                    <%= row.packPrice %>€
+                                </td>
+                                <td>
+                                    <%= new Date(row.timestamp).toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <!-- <button class="button assignTeacher" id="<%= row.id %>" name="<%= row.clientName %>"
+                                        teachers="<%= JSON.stringify(teachers) %>">Asignar profesor</button> -->
+                                    <button class="button is-warning cancel" id="<%= row.id %>"
+                                        name="<%= row.clientName %>">Cancelar</button>
+                                    <button class="button is-success payment" id="<%= row.id %>"
+                                        name="<%= row.clientName %>">Cobrar suscripción</button>
+                                </td>
+                            </tr>
+                            </tr>
+                            <% }); %>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<html>
+<%- include('../partials/header', {title: "Login", type: null, includePushNotifications: false }); %>
+
+<body id="login">
+    <div class="login__container">
+        <div>
+            <img class="logo" src="/static/images/logo.svg" />
+        </div>
+        <form class="box login" method="POST" action="/panel/login" enctype="multipart/form-data">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="Email" name="email" required
+                        autocomplete="username" />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input" type="password" placeholder="Contraseña" name="password" required
+                        autocomplete="current-password" />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+            </div>
+            <% if (!valid) { %>
+            <div class="notification is-danger is-light">
+                <button class="delete"></button>
+                Los datos introducidos no son correctos.
+            </div>
+            <% } %>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-success w-full">Iniciar sesión</button>
+                </p>
+            </div>
+        </form>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

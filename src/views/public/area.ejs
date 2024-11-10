@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/header', {title: title }); %>
+
+<body>
+
+    <link rel="stylesheet" href="/static/public/css/index.css">
+    <link rel="stylesheet" href="/static/public/css/area.css">
+    <link rel="stylesheet" href="/static/public/css/questionnaire.css">
+    <%- include('./partials/nav', { linkId }); %>
+    <%- include('./partials/validation-alert'); %>
+    <%- include('./partials/questionnaire'); %>
+    <main>
+        <section class="content nav__padding">
+            <div class="content__header">
+                <h1 class="underline">¡Bienvenido a su área de usuario <%= session.user.name.trim() %> <%= session.user.surname.trim() %>!</h1>
+            </div>
+            <h3>Gestiona pagos, métodos de pago y suscripciones</h3>
+            <% if (subscriptions.length === 0 && Object.keys(payments).length === 0) { %>
+            <p class="content__message">
+                Puede generar una compra añadiendo productos al carrito desde el apartado
+                <a href="/precios">precios</a>
+            </p>
+            <% } %>
+            <h4 class="content__subsctiptions__label">Suscripciones</h4>
+            <% if (subscriptions.length === 0) { %>
+            <p>No tiene suscripciones activas</p>
+            <% } %>
+            <ul class="content__subsctiptions">
+                <% subscriptions.forEach(function (sub) { %>
+                <li class="content__subsctiptions__item">
+                    <div class="content__subsctiptions__item__label">
+                        Nombre:
+                    </div>
+                    <div class="content__subsctiptions__item__value title"><%= sub.name %></div>
+                    <div class="content__subsctiptions__item__label">
+                        Descripción:
+                    </div>
+                    <div class="content__subsctiptions__item__value"><%- sub.description %>/mes</div>
+                    <div class="content__subsctiptions__item__label">
+                        Precio:
+                    </div>
+                    <div class="content__subsctiptions__item__value"><%- sub.price_description %>/mes</div>
+                </li>
+                <% }) %>
+            </ul>
+            <% if (subscriptions.length > 0) { %>
+            <p class="content__message base">Puede cancelar cualquiera de sus suscripciones contactando a <a
+                    href="mailto:contacto@musicalmsoul.com">contacto@musicalmsoul.com</a> o por <a
+                    href="https://api.whatsapp.com/send/?phone=34604369473&text=¡Hola soy <%= session.user.name %>!%0AQuiero cancelar mi suscripción a un pack de clases">whatsapp</a>
+            </p>
+            <% } %>
+            <% if (card) { %>
+            <h4 class="content__subsctiptions__label">Método de pago para suscripciones</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Número tarjeta
+                        </th>
+                        <th>
+                            Expiración
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= card.c_number %>
+                        </td>
+                        <td>
+                            <%= card.expiry_date.slice(2) %> /
+                            <%= card.expiry_date.slice(0, 2) %>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td style="height: 100px; text-align: right;">
+                            <a class="button alert" href="/actualizar-metododo-pago">Cambiar método de pago</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <% } %>
+            <table>
+                <h4 class="content__subsctiptions__label">Historial de pagos</h4>
+                <% if (payments.length === 0) { %>
+                <p>No tiene pagos recientes</p>
+                <% } else { %>
+                <thead>
+                    <tr>
+                        <th>
+                            Identificador
+                        </th>
+                        <th>
+                            Fecha
+                        </th>
+                        <th>
+                            Descripción
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% payments.forEach(function (payment) { %>
+                    <tr>
+                        <td>
+                            <%= payment.id %>
+                        </td>
+                        <td>
+                            <%= new Date(payment.date).toLocaleDateString() %>
+                            <br />
+                            <%=  new Date(payment.date).toLocaleTimeString() %>
+                        </td>
+                        <td>
+                            <b><%= payment.paymentType %></b>
+                            <br />
+                            <% payment.packs.forEach(function (pack) { %>
+                            <% if (pack.name === null && pack.id === null)  { %>
+                            Actualización método de pago
+                            <% } else { %>
+                            <%= pack.name %> <br />
+                            <% } %>
+                            <% }) %>
+                        </td>
+                        <td>
+                            <%= payment.total %>€
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+                <% } %>
+            </table>
+            <form action="/cerrar-sesion" method="POST" id="logout">
+                <input type="submit" value="Cerrar Sesión" class="button alert" />
+            </form>
+        </section>
+    </main>
+    <%- include('./partials/footer', { page: '/' }); %>
+    <%- include('./partials/scripts', { scripts: ["scripts.js", "appear.js", "dropdown.js", "questionnaire.js"] }); %>
+    <!-- <script src="/static/public/js/dropdown.js"></script> -->
+</body>
+
+
+</html>
